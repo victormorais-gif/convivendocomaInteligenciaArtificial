@@ -1,0 +1,411 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Impede que padding "estoure" a largura dos elementos */
+}
+body {
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Unificando as propriedades: */
+    margin: 0;
+    padding: 0;
+    color: #1F1F1F; /* Cor padrão branca para ler sobre as imagens */
+    font-family: 'Poppins', sans-serif; /* Agora a Poppins vai funcionar */
+    overflow-x: hidden; /* Evita barra de rolagem horizontal indesejada */
+}
+
+
+nav{
+    display: flex;
+    justify-content: flex-end;
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: transparent;
+}
+nav ul{ 
+    width: 100%; 
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+nav li{ 
+    height: 60px;
+}
+nav li:first-child{ 
+    margin-right: auto;}
+
+nav a{
+    height: 100%;
+    padding:0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: #fff ;
+}
+nav a:hover{
+    color: #0a1af6;
+}
+.icon{
+    fill: #fcfcfd;
+}
+.logotipo{
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+ .sidebar{
+    position: fixed;
+    top: 0;
+    right:0;
+    height: 100vh;
+    width: 280px;
+    z-index: 999;
+    background-color: rgba(255,255,255,0.2);
+    box-shadow: -10px 0 10px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    backdrop-filter: blur(10px);
+ }
+@media( max-width: 800px){
+        .hideMobile{
+            display: none;
+        }
+}
+@media (min-width:800px){
+        .hideDesktop{
+            display: none;
+        }
+}/* Padronizando todos os títulos de seções de conteúdo */
+section.module h2, 
+section.module h3 {
+    font-size: clamp(1.8rem, 5vw, 3rem); /* Um pouco menor que o H1, mas ainda grande */
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+/* 2. Mantendo Títulos e H1 sempre brancos em qualquer lugar */
+/* (Já que você quer que os títulos dos textos também sejam brancos) */
+/* 2. Mantendo Títulos e H1 sempre brancos em qualquer lugar */
+/* (Já que você quer que os títulos dos textos também sejam brancos) */
+h1, h2, h3, h4 {
+    color: #fff !important; 
+    font-weight: 900;
+} /* Faltava abrir lá em cima e fechar aqui embaixo */
+.wrapper{
+    width: 100%;
+    margin: 0 auto;
+}
+main{
+    display: block;
+    background-color: #fff;
+}
+.container{
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+img,video{
+    max-width: 100%;
+    height: auto;
+}
+section.module p {
+    margin-bottom: 40px;
+    font-size: clamp(1rem, 1.2vw, 1.25rem);
+}
+section.module:last-child{
+    margin-bottom: 0;
+}
+section.module h2{
+    margin-bottom: 40px;
+    font-size: clamp(1.5rem, 3vw, 3rem);
+}
+section.module.content { 
+    padding: 40px 0;
+    background: #beedff;
+    /* Adicione esta linha abaixo para garantir que nada "vaze" */
+    display: flow-root; 
+}
+section.module.content .container > *:first-child {
+    margin-top: 0;
+}
+section.module.content .container > *:last-child {
+    margin-bottom: 0;
+}
+/* 1. Primeiro definimos o comportamento da seção (o container) */
+section.module.parallax {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh !important;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* 2. Agora o Título H1 (RESPONSIVO E ÚNICO) */
+section.module.parallax h1 {
+    word-break: keep-all; /* Impede que quebre no meio da palavra se possível */
+    hyphens: auto;        /* Adiciona hífen se precisar quebrar (ajuda no mobile) */
+    letter-spacing: -1px; /* Aperta um pouco as letras para ganhar espaço */
+    color: #fff;
+    text-align: center;
+    /* O clamp impede que ele fique maior que a tela */
+    font-size: clamp(2rem, 8vw, 5rem); 
+    z-index: 50;
+    text-transform: uppercase;
+    font-weight: 900;
+    width: 100%;
+    padding: 0 10px;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+/* 3. O efeito de sombra/gradiente */
+section.module.parallax::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 8;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 40%, #000);
+}
+
+/* 4. MEDIA QUERY (Ajustes para Celular) */
+@media (max-width: 800px) {
+    section.module.parallax {
+        background-attachment: scroll; /* Melhora performance no celular */
+        height: auto !important;
+        min-height: 100vh;
+        padding-top: 80px; /* Espaço para o menu não cobrir o H1 */
+    }
+}
+@media (max-width: 600px) {
+    section.module.parallax h1 {
+        font-size: 1.8rem; /* No mobile, vamos travar num tamanho fixo se o clamp falhar */
+        padding: 0 5px;    /* Diminuímos o recuo para a palavra ter mais espaço lateral */
+    }
+}
+section.module.content p, 
+section.module.content li {
+    color: #000000; /* Preto puro para os textos */
+    margin-bottom: 20px;
+    font-size: clamp(1rem,1.2vw,1.25rem);
+    font-family:'Poppins',sans-serif;
+    line-height: 1.6;
+}
+section.module{
+    margin-bottom: 0;
+    padding-left:  0;
+}
+section.module li{
+    margin-bottom: 10px;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+/* 5. As imagens de fundo */
+section.module.parallax.parallax-1 { background-image: url(imagens/trabalho.jpeg); }
+section.module.parallax.parallax-2{ background-image: url(imagens/efeito1.jpeg);}
+section.module.parallax.parallax-3{background-image: url(imagens/estudos.jpeg);}
+section.module.parallax.parallax-4{background-image: url(imagens/dia.jpeg);}
+/* Nova Imagem para o Parallax Final */
+section.module.parallax.parallax-5 { 
+    background-image: url(imagens/teste.jpg); /* Certifique-se de ter essa imagem */
+}
+
+/* Estilização da Chamada Final */
+.chamada-final {
+    display: block;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    color: #1f1f1f;
+    font-weight: 700;
+}
+
+/* Blocos de Cursos */
+.cursos {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.curso {
+    flex: 1;
+    height: 280px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.curso:hover {
+    transform: translateY(-8px); /* Efeito de flutuar */
+}
+
+/* Fotos de fundo dos cards (usando a lógica que você já tinha) */
+.curso:nth-child(1) { background-image: url("imagens/estudos.jpeg"); }
+.curso:nth-child(2) { background-image: url("imagens/trabalho.jpeg"); }
+.curso:nth-child(3) { background-image: url("imagens/dia.jpeg"); }
+
+.curso-info {
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.75); /* Um pouco mais escuro para melhor contraste */
+    text-align: center;
+}
+
+.curso-info h3 {
+    color: #ffffff !important;
+    /* Usamos !important para ganhar da regra 'section.module h3' lá de cima */
+    font-size: 1rem !important; 
+    margin-bottom: 15px !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    font-weight: 600 !important; /* Menos negrito para ficar mais delicado */
+}
+.btn-curso {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0d6efd;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-curso:hover {
+    background-color: #084298;
+}
+/* Rodapé Geral */
+/* Rodapé Geral */
+footer {
+    background-color: #1a1a1a;
+    color: #999 !important; /* Adicionamos o !important para vencer o preto puro! */
+    text-align: center;
+    padding: 40px 10px;
+    font-size: 0.85rem;
+    border-top: 1px solid #333;
+}
+
+/* Garante que qualquer parágrafo, link ou item de lista dentro do footer também mude de cor */
+footer p, footer li, footer a, footer span {
+    color: #999 !important;
+}
+/* Responsividade para celulares */
+@media (max-width: 800px) {
+    .cursos {
+        flex-direction: column;
+    }
+    .curso {
+        width: 100%;
+        height: 220px;
+    }
+}
+/* --- ESTILO DAS PÁGINAS DE CURSO (VERSÃO CORRIGIDA) --- */
+
+/* 1. Header Parallax Curto */
+.cabecalho-curso {
+    height: 50vh !important; /* Aumentei um pouco para dar mais destaque */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.parallax-curso-estudos {
+    background-image: url("imagens/estudos.jpeg");
+}
+/* Imagem para o topo da página de trabalho */
+.parallax-curso-trabalho {
+    background-image: url("imagens/trabalho.jpeg");
+}
+/* Imagem para o topo da página de dia a dia */
+.parallax-curso-dia {
+    background-image: url("imagens/dia.jpeg");
+}
+/* Ajuste do Subtítulo no Header (Agora maior!) */
+.container-header p {
+    color: #ffffff !important;
+    font-size: 1.6rem !important; /* Tamanho bem visível */
+    font-weight: 500 !important;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8); /* Sombra forte para leitura */
+    margin-top: 15px;
+}
+
+/* 2. Conteúdo da Página de Curso (Fundo Azul e Fonte) */
+.conteudo-curso.module.content {
+    background-color: #beedff !important; /* Garante o azul em toda a página */
+    padding: 60px 0;
+}
+
+/* Forçar títulos a serem pretos APENAS dentro do conteúdo do curso */
+.conteudo-curso h2, 
+
+.conteudo-curso h3 {
+    color: #1f1f1f !important; 
+    text-align: left;
+    font-size: clamp(1.5rem, 3vw, 2.2rem) !important;
+    margin-top: 30px;
+}
+
+/* 3. Botão Voltar */
+.btn-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #0d6efd;
+    font-weight: 700;
+    margin-bottom: 40px;
+    transition: 0.3s;
+    font-size: 1.1rem;
+}
+
+.btn-voltar span {
+    display: inline-block;
+    transform: rotate(180deg);
+    font-size: 1.4rem;
+}
+
+.btn-voltar:hover {
+    color: #084298;
+    transform: translateX(-8px);
+}
+
+/* 4. Ajuste dos Cards de Exemplo */
+.exemplo-ia {
+    background-color: rgba(255, 255, 255, 0.5); /* Branco semi-transparente sobre o azul */
+    border-left: 6px solid #0d6efd;
+    padding: 25px;
+    border-radius: 12px;
+    margin: 30px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.prompt { color: #084298 !important; font-weight: 700; }
+.resposta { color: #333 !important; }
